@@ -20,7 +20,7 @@ export default function Home() {
           <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 sm:text-2xl">Start Here</h2>
           <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">Choose a category to jump into commands or scripts quickly.</p>
 
-          <div className="mt-5 grid gap-4 sm:grid-cols-2">
+          <div className="mt-5 grid gap-4 sm:grid-cols-3 sm:gap-6">
             <Link
               href="/powershell-cheatsheet-for-python"
               className="group rounded-xl border border-zinc-300 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-zinc-400 hover:shadow-md dark:border-zinc-700 dark:bg-zinc-900 dark:hover:border-zinc-500"
@@ -46,6 +46,19 @@ export default function Home() {
               </div>
               <p className="mt-2 text-sm leading-6 text-zinc-600 dark:text-zinc-300">
                 Reusable script examples with step-by-step notes for data processing and Azure automation tasks.
+              </p>
+            </Link>
+
+            <Link
+              href="/sql-commands"
+              className="group rounded-xl border border-zinc-300 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-zinc-400 hover:shadow-md dark:border-zinc-700 dark:bg-zinc-900 dark:hover:border-zinc-500"
+            >
+              <div className="flex items-center justify-between gap-3">
+                <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100 sm:text-lg">SQL Commands</h3>
+                <span className="text-zinc-400 transition-transform group-hover:translate-x-0.5">-&gt;</span>
+              </div>
+              <p className="mt-2 text-sm leading-6 text-zinc-600 dark:text-zinc-300">
+                Essential SQL queries and commands for managing databases and analyzing data in Azure environments.
               </p>
             </Link>
           </div>
