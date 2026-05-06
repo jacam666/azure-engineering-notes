@@ -1,11 +1,19 @@
+import Link from "next/link";
 
 
 export default function PowerShellCheatSheetForPython() {
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex flex-col items-center  w-full flex-1 p-20 text-center">
-        <h1 className="text-4xl font-bold">PowerShell CheatSheet for Python</h1>
-        <h2 className="text-xl mt-4">This is a cheat sheet for using PowerShell with Python</h2>
+        <div className="w-full max-w-4xl flex-col sm:flex-row text-left flex items-center gap-4">
+          <button className="px-3 py-2 bg-zinc-200 dark:bg-zinc-800 rounded hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-colors">
+            <Link href="/">&#8592; Back to Home</Link>
+          </button>
+          <div className="flex flex-col mx-auto items-center">
+            <h1 className="text-4xl font-bold">PowerShell CheatSheet for Python</h1>
+            <h2 className="text-xl mt-4">This is a cheat sheet for using PowerShell with Python</h2>
+          </div>
+        </div>
         <section className="w-full max-w-4xl mt-8 text-left">
           <h3 className="text-2xl mt-4">PowerShell Commands</h3>
           <div className="mt-4 overflow-x-auto">

@@ -21,10 +21,10 @@ export default function Home() {
             <Link href="/powershell-cheatsheet-for-python">
               <li>PowerShell CheatSheet for Python</li>
             </Link>
-            <li>Python Scripts</li>
-
+            <Link href="/python-scripts">
+              <li>Python Scripts</li>
+            </Link>
           </ul>
-
         </section>
       </main>
     </div>
