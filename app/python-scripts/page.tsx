@@ -107,6 +107,63 @@ df.to_csv("data/processed_energy.csv", index=False)
 
 print("Processed file saved successfully!")`,
     },
+    {
+        title: "Azure Blob Batch Upload",
+        description: "Upload multiple processed CSV files to Azure Blob Storage, including summary reports stored in a reports folder path.",
+        command: "python upload_reports.py",
+        steps: [
+            "Import Azure identity and blob storage SDK clients needed for authentication and upload operations.",
+            "Set the storage account and container names where files will be uploaded.",
+            "Define a list of local file paths and their destination blob names, including nested blob paths for reports.",
+            "Build the storage account URL so the SDK can connect to your Azure Storage account.",
+            "Create a DefaultAzureCredential and initialize a BlobServiceClient.",
+            "Loop through each file mapping and create a BlobClient for the matching blob target.",
+            "Open each local file in binary mode and upload it with overwrite enabled.",
+            "Print progress for each file and a final success message after all uploads complete.",
+        ],
+        script: `from azure.identity import DefaultAzureCredential
+from azure.storage.blob import BlobServiceClient
+
+STORAGE_ACCOUNT_NAME = "jclabstorage26"
+CONTAINER_NAME = "raw-data"
+
+files_to_upload = [
+    {
+        "local_path": "data/processed_energy.csv",
+        "blob_name": "processed_energy.csv"
+    },
+    {
+        "local_path": "data/charges_summary.csv",
+        "blob_name": "reports/charges_summary.csv"
+    },
+    {
+        "local_path": "data/monthly_summary.csv",
+        "blob_name": "reports/monthly_summary.csv"
+    },
+    {
+        "local_path": "data/energy_summary.csv",
+        "blob_name": "reports/energy_summary.csv"
+    }
+]
+
+account_url = f"https://{STORAGE_ACCOUNT_NAME}.blob.core.windows.net"
+
+credential = DefaultAzureCredential()
+blob_service_client = BlobServiceClient(account_url, credential=credential)
+
+for file in files_to_upload:
+    blob_client = blob_service_client.get_blob_client(
+        container=CONTAINER_NAME,
+        blob=file["blob_name"]
+    )
+
+    with open(file["local_path"], "rb") as data:
+        blob_client.upload_blob(data, overwrite=True)
+
+    print(f"Uploaded {file['local_path']} to {file['blob_name']}")
+
+print("All files uploaded successfully!")`,
+    },
 ];
 
 
