@@ -36,6 +36,16 @@ export default function SQLQueries() {
             </article>
 
             <article className="rounded-xl border border-zinc-300 bg-white p-4 shadow-sm transition-transform hover:-translate-y-1 dark:border-zinc-700 dark:bg-zinc-900 sm:p-6">
+              <h4 className="text-xl font-semibold">Insert Sample Transactions</h4>
+              <p className="mt-3 text-sm leading-6 text-zinc-700 dark:text-zinc-300">Add example rows to populate the transactions table.</p>
+              <div className="mt-4 rounded-lg bg-zinc-100 px-3 py-2 text-sm break-words dark:bg-zinc-800">
+                <pre className="whitespace-pre-wrap">
+                  <code>{`INSERT INTO transactions VALUES\n('2026-01-01', -100, 'Electricity', 'Charge', '2026-01'),\n('2026-01-02', 200, NULL, 'Payment', '2026-01'),\n('2026-02-01', -150, 'Gas', 'Charge', '2026-02'),\n('2026-02-05', 300, NULL, 'Payment', '2026-02'),\n('2026-03-01', -120, 'Electricity', 'Charge', '2026-03');`}</code>
+                </pre>
+              </div>
+            </article>
+
+            <article className="rounded-xl border border-zinc-300 bg-white p-4 shadow-sm transition-transform hover:-translate-y-1 dark:border-zinc-700 dark:bg-zinc-900 sm:p-6">
               <h4 className="text-xl font-semibold">Conditional Filter</h4>
               <p className="mt-3 text-sm leading-6 text-zinc-700 dark:text-zinc-300">Return rows that match one or more conditions.</p>
               <div className="mt-4 rounded-lg bg-zinc-100 px-3 py-2 text-sm break-words dark:bg-zinc-800">
