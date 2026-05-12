@@ -5,26 +5,46 @@ const scriptCards = [
         title: "File Organizer",
         description: "Sort files into folders by extension so messy download directories are easier to clean up.",
         command: "python organize_files.py",
+        overview: "...",
+        concepts: [],
+        breakdown: [],
+        whenToUse: ""
     },
     {
         title: "CSV Cleaner",
         description: "Load a CSV, remove duplicate rows, and normalize column values before analysis.",
         command: "python clean_csv.py",
+        overview: "...",
+        concepts: [],
+        breakdown: [],
+        whenToUse: ""
     },
     {
         title: "API Health Check",
         description: "Ping an endpoint, capture the status code, and log the response time for quick checks.",
         command: "python health_check.py",
+        overview: "...",
+        concepts: [],
+        breakdown: [],
+        whenToUse: ""
     },
     {
         title: "Log Parser",
         description: "Scan log files for errors and extract the lines you need for debugging or reporting.",
         command: "python parse_logs.py",
+        overview: "...",
+        concepts: [],
+        breakdown: [],
+        whenToUse: ""
     },
     {
         title: "Azure Blob Upload",
         description: "Upload a local CSV file into Azure Blob Storage by authenticating with DefaultAzureCredential.",
-        command: "python upload_blob.py",
+        command: "python scripts/upload_to_blob.py",
+        overview: "...",
+        concepts: ["Azure Identity (DefaultAzureCredential)", "BlobServiceClient", "BlobClient", "Containers vs blobs", "Authentication without passwords"],
+        breakdown: ["account_url → builds the connection string to your Azure Storage account", "DefaultAzureCredential() → uses your Azure login (az login) to authenticate securely", "BlobServiceClient → connects to the storage account", "blob_client → targets a specific container + file", "open(..., \"rb\") → reads the file in binary format", "upload_blob(..., overwrite=True) → uploads the file and replaces it if it already exists"],
+        whenToUse: "Used in data pipelines to upload raw or processed data to cloud storage (Azure Blob). Essential for automating data workflows, sharing files across teams, and integrating with other Azure services that can read from Blob Storage.",
         steps: [
             "Import Azure identity and blob storage helpers needed for authentication and upload operations.",
             "Define the storage account name, blob container, local file path, and destination blob name.",
@@ -84,9 +104,9 @@ print(df.head())
 df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
 
 
-# Create transaction category (Charge / Payment)
+#"Define a helper function that labels negative amounts as Charges and positive amounts as Payments.",
 def classify_transaction(amount):
-    if amount > 0:
+    if amount < 0:
         return "Charge"
     else:
         return "Payment"
@@ -254,6 +274,34 @@ export default function PythonScripts() {
                                 <div className="mt-4 rounded-lg bg-zinc-100 px-3 py-2 text-sm break-words dark:bg-zinc-800">
                                     <span className="font-medium">Run:</span> <code>{card.command}</code>
                                 </div>
+                                {card.overview && card.overview !== "..." && (
+                                    <div className="mt-4">
+                                        <h5 className="text-sm font-semibold uppercase tracking-wide text-zinc-600 dark:text-zinc-400">
+                                            What It Does
+                                        </h5>
+                                        <p className="mt-2 text-sm leading-6 text-zinc-700 dark:text-zinc-300">
+                                            {card.overview}
+                                        </p>
+                                    </div>
+                                )}
+                                {card.concepts && (
+                                    <div className="mt-4">
+                                        <h5 className="text-sm font-semibold uppercase tracking-wide text-zinc-600 dark:text-zinc-400">Concepts</h5>
+                                        <p className="mt-2 text-sm leading-6 text-zinc-700 dark:text-zinc-300">{card.concepts}</p>
+                                    </div>
+                                )}
+                                {card.breakdown && (
+                                    <div className="mt-4">
+                                        <h5 className="text-sm font-semibold uppercase tracking-wide text-zinc-600 dark:text-zinc-400">Breakdown</h5>
+                                        <p className="mt-2 text-sm leading-6 text-zinc-700 dark:text-zinc-300">{card.breakdown}</p>
+                                    </div>
+                                )}
+                                {card.whenToUse && (
+                                    <div className="mt-4">
+                                        <h5 className="text-sm font-semibold uppercase tracking-wide text-zinc-600 dark:text-zinc-400">When to Use</h5>
+                                        <p className="mt-2 text-sm leading-6 text-zinc-700 dark:text-zinc-300">{card.whenToUse}</p>
+                                    </div>
+                                )}
                                 {card.steps && (
                                     <div className="mt-4">
                                         <h5 className="text-sm font-semibold uppercase tracking-wide text-zinc-600 dark:text-zinc-400">

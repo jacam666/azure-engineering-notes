@@ -63,6 +63,19 @@ export default function Home() {
             </Link>
 
             <Link
+              href="/sql-queries"
+              className="group rounded-xl border border-zinc-300 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-zinc-400 hover:shadow-md dark:border-zinc-700 dark:bg-zinc-900 dark:hover:border-zinc-500"
+            >
+              <div className="flex items-center justify-between gap-3">
+                <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100 sm:text-lg">SQL Queries</h3>
+                <span className="text-zinc-400 transition-transform group-hover:translate-x-0.5">-&gt;</span>
+              </div>
+              <p className="mt-2 text-sm leading-6 text-zinc-600 dark:text-zinc-300">
+                Practical query patterns for filtering, joins, aggregations, and analytics-focused reporting.
+              </p>
+            </Link>
+
+            <Link
               href="/pandas-reference"
               className="group rounded-xl border border-zinc-300 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-zinc-400 hover:shadow-md dark:border-zinc-700 dark:bg-zinc-900 dark:hover:border-zinc-500"
             >
